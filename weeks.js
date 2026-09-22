@@ -55,13 +55,13 @@ const WEEKS = [
       },
       {
         home: "Achal", homeTeam: "Team Handcuffs", away: "Vaibhav", awayTeam: "The Padawans",
-        series: "Vaibhav leads 1–0 (Reg. 1–0; Post. 0–0)",
-        blurb: "Somehow just one meeting since 2022 — and it was a 113.30-point Vaibhav blowout in 2025, the widest margin either manager has been part of. Achal gets the chance to rewrite the only page in this book."
+        series: "Achal leads 3–2 (Reg. 2–2; Post. 1–0)",
+        blurb: "Deadlocked 2–2 in the regular season, but Achal took their 2024 postseason meeting for the overall series lead. Vaibhav has answered with the last two regular-season wins — including a 113.30-point demolition in 2025, the widest margin this series has seen. Achal holds the edge; Vaibhav holds the momentum."
       },
       {
         home: "Taylor", homeTeam: "Fannin the Flames", away: "Dhiraj", awayTeam: "Love Thy Nabers",
-        series: "Taylor leads 4–0 (Reg. 3–0; Post. 1–0)",
-        blurb: "Taylor is a perfect 4–0 against Dhiraj, postseason included, at an average margin near 54 points. Dhiraj's closest call was 7.44 in their first meeting — the gap has only widened since. Someone's story changes this week, or it really is a pattern."
+        series: "Taylor leads 6–1 (Reg. 5–1; Post. 1–0)",
+        blurb: "Dhiraj took the very first meeting back in 2022 — and hasn't beaten Taylor since. Six straight Taylor wins, postseason included, though the 0.56-point escape in 2023 remains the closest game this series has seen. The streak is long; it hasn't always been safe."
       },
       {
         home: "Soham", homeTeam: "The RB Shelter", away: "Shiamak", awayTeam: "Super Lamario Bros",
