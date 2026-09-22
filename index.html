@@ -254,21 +254,58 @@
   .error-note { color: var(--red); font-size: 14px; }
 
   /* Full newsletter-style week preview */
-  .nl-gen { color: var(--muted); font-size: 12px; margin-top: 6px; }
-  .nl-over { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 30px; }
-  .nl-over-card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
-    padding: 14px 16px; display: block; text-decoration: none; color: var(--text);
+  .nl-banner {
+    background: linear-gradient(135deg, #0d1a10 0%, #0a0c0a 55%, #101825 100%);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 22px 24px; margin-bottom: 26px;
   }
-  .nl-over-card:hover { border-color: var(--green); }
-  .nl-over-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  .nl-over-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .05em; text-transform: uppercase; }
-  .nl-over-name .rec { color: var(--muted); font-size: 14px; font-weight: 500; margin-left: 6px; }
-  .nl-over-proj { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 26px; font-variant-numeric: tabular-nums; }
+  .nl-banner h2 { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: clamp(26px, 5vw, 40px); text-transform: uppercase; letter-spacing: .02em; }
+  .nl-banner p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .nl-sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .nl-sechead .src { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .nl-gen { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .nl-over { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 30px; }
+  .nl-over-card {
+    display: block; text-decoration: none; color: var(--text);
+    padding: 16px 2px 18px; border-bottom: 1px solid var(--border);
+  }
+  .nl-over-card:hover { background: rgba(61,220,113,.03); }
   .nl-blue { color: var(--blue); } .nl-red { color: var(--red); }
-  .nl-winbar { height: 5px; border-radius: 3px; background: var(--red); margin-top: 10px; overflow: hidden; }
+  .nl-tag-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .nl-meet-tag {
+    font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  }
+  .nl-meet-tag.marquee { color: var(--green); background: rgba(61,220,113,.12); border: 1px solid rgba(61,220,113,.4); border-radius: 4px; padding: 2px 8px; }
+  .nl-badge {
+    font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: .1em; text-transform: uppercase;
+    background: var(--text); color: #0a0c0a; border-radius: 4px; padding: 2px 8px;
+  }
+  .nl-page-link { margin-left: auto; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .nl-over-card:hover .nl-page-link { color: var(--green); }
+  .nl-over-main { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 14px; align-items: center; }
+  .nl-ident { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .nl-ident.right { flex-direction: row-reverse; text-align: right; }
+  .nl-ident img { width: 44px; height: 44px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--border); flex: none; }
+  .nl-ident .nm { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 24px; letter-spacing: .04em; text-transform: uppercase; line-height: 1.05; }
+  .nl-ident .tm { color: var(--muted); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nl-ident .rc { color: var(--muted); font-size: 12px; font-weight: 600; }
+  .nl-center { text-align: center; min-width: 230px; }
+  .nl-nums { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 34px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .nl-nums .vs { color: var(--muted); font-size: .45em; font-weight: 700; margin: 0 10px; vertical-align: middle; }
+  .nl-pcts { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 600; margin-top: 5px; }
+  .nl-pcts .nl-blue, .nl-pcts .nl-red { letter-spacing: .04em; }
+  .nl-winbar { height: 5px; border-radius: 3px; background: var(--red); margin-top: 6px; overflow: hidden; }
   .nl-winbar > div { height: 100%; background: var(--blue); }
-  .nl-over-sub { display: flex; justify-content: space-between; color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+  .nl-series-line { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: .04em; text-transform: uppercase; margin-top: 12px; }
+  .nl-series-line.home { color: var(--blue); } .nl-series-line.away { color: var(--red); } .nl-series-line.even { color: var(--muted); }
+  .nl-oneliner { color: var(--text); font-size: 14px; line-height: 1.5; margin-top: 4px; }
+  @media (max-width: 560px) {
+    .nl-over-main { grid-template-columns: 1fr; }
+    .nl-ident.right { flex-direction: row; text-align: left; }
+    .nl-center { min-width: 0; }
+  }
   .nl-match { border-top: 3px solid var(--border); margin-top: 38px; padding-top: 26px; scroll-margin-top: 16px; }
   .nl-match-title { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: clamp(26px, 5vw, 40px); text-transform: uppercase; letter-spacing: .02em; }
   .nl-match-title .vs { color: var(--muted); font-size: .6em; margin: 0 8px; }
@@ -343,8 +380,8 @@
 
 <footer>Newsletter pages by the commissioner. Live standings via the Sleeper API.</footer>
 
-<script src="weeks.js?v=4"></script>
-<script src="week3-data.js?v=1"></script>
+<script src="weeks.js?v=5"></script>
+<script src="week3-data.js?v=2"></script>
 <script>
 const LEAGUE_ID = "1312585067658223616";
 
@@ -480,23 +517,44 @@ function lineupTable(owner, cls, lineup) {
 function renderFullPreview(panel, w, data) {
   var html = "";
 
+  // Hero banner
+  if (w.banner) {
+    html += '<div class="nl-banner"><h2>' + w.banner + "</h2>" +
+      (w.bannerSub ? "<p>" + w.bannerSub + "</p>" : "") + "</div>";
+  }
+
   // Overview cards
-  html += '<h3 class="nl-sec" style="margin-top:0">This Week’s Matchups</h3>' +
-    '<div class="nl-gen" style="margin:-4px 0 12px">Source: current submitted lineups · Sleeper projections · modeled win chance · generated ' + data.generatedAt + "</div>" +
+  html += '<div class="nl-sechead"><h3 class="nl-sec" style="margin:0">This Week’s Matchups</h3>' +
+    '<span class="src">Source projections · Modeled win chance</span></div>' +
+    '<div class="nl-gen" style="margin:2px 0 12px">Current submitted lineups · generated ' + data.generatedAt + "</div>" +
     '<div class="nl-over">';
   data.matchups.forEach(function (m, i) {
+    var meetHtml = m.marquee
+      ? '<span class="nl-meet-tag marquee">★ Marquee Rivalry</span>'
+      : (m.meetTag ? '<span class="nl-meet-tag">↔ ' + m.meetTag + "</span>" : "");
+    var avH = m.homeAvatar ? '<img src="' + m.homeAvatar + '" alt="">' : "";
+    var avA = m.awayAvatar ? '<img src="' + m.awayAvatar + '" alt="">' : "";
     html += '<a class="nl-over-card" href="#nl-m' + i + '">' +
-      '<div class="nl-over-top">' +
-      '<div class="nl-over-name nl-blue">' + m.home + '<span class="rec">' + m.homeRecord + "</span></div>" +
-      '<div class="nl-over-proj"><span class="nl-blue">' + m.homeProj.toFixed(2) + '</span>' +
-      '<span style="color:var(--muted);font-size:.55em"> vs </span>' +
-      '<span class="nl-red">' + m.awayProj.toFixed(2) + "</span></div>" +
-      '<div class="nl-over-name nl-red">' + m.away + '<span class="rec">' + m.awayRecord + "</span></div>" +
-      "</div>" +
+      '<div class="nl-tag-row">' + meetHtml +
+      (m.badge ? '<span class="nl-badge">' + m.badge + "</span>" : "") +
+      '<span class="nl-page-link">Full breakdown →</span></div>' +
+
+      '<div class="nl-over-main">' +
+      '<div class="nl-ident">' + avH +
+      '<div><div class="nm nl-blue">' + m.home + '</div><div class="tm">' + m.homeTeam + '</div><div class="rc">' + m.homeRecord + "</div></div></div>" +
+
+      '<div class="nl-center">' +
+      '<div class="nl-nums"><span class="nl-blue">' + m.homeProj.toFixed(2) + '</span><span class="vs">VS</span><span class="nl-red">' + m.awayProj.toFixed(2) + "</span></div>" +
+      '<div class="nl-pcts"><span class="nl-blue">' + m.homeWin.toFixed(1) + '% WIN</span><span class="nl-red">' + m.awayWin.toFixed(1) + "% WIN</span></div>" +
       '<div class="nl-winbar"><div style="width:' + m.homeWin + '%"></div></div>' +
-      '<div class="nl-over-sub"><span>' + m.homeWin.toFixed(1) + "% win</span>" +
-      "<span>" + m.seriesLine + "</span>" +
-      "<span>" + m.awayWin.toFixed(1) + "% win</span></div>" +
+      "</div>" +
+
+      '<div class="nl-ident right">' + avA +
+      '<div><div class="nm nl-red">' + m.away + '</div><div class="tm">' + m.awayTeam + '</div><div class="rc">' + m.awayRecord + "</div></div></div>" +
+      "</div>" +
+
+      '<div class="nl-series-line ' + m.seriesCls + '">' + m.seriesLine + "</div>" +
+      '<div class="nl-oneliner">' + m.oneLiner + "</div>" +
       "</a>";
   });
   html += "</div>";

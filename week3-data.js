@@ -2,9 +2,10 @@
 const WEEK3_DATA = {
  "week": 3,
  "sigma": 25.4,
- "generatedAt": "Sep 21, 2026 \u00b7 11:53 PM ET",
+ "generatedAt": "Sep 22, 2026 \u00b7 12:03 AM ET",
  "matchups": [
   {
+   "marquee": false,
    "home": "Advaith",
    "homeTeam": "First Indians",
    "homeRecord": "1-0",
@@ -15,7 +16,13 @@ const WEEK3_DATA = {
    "awayProj": 131.52,
    "homeWin": 27.3,
    "awayWin": 72.7,
-   "seriesLine": "Nihar leads 5-0",
+   "seriesLine": "Nihar leads Advaith 5\u20130 (Reg. 5\u20130; Post. 0\u20130)",
+   "seriesCls": "away",
+   "badge": "LINEUP WATCH",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Someone leaves 2\u20130. Nihar brings the current edge, led by Robinson and Prescott; Advaith answers with Justin Jefferson at 14.57.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/8824e5fb6de83f13b4db8736389eeecf",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/5808fda7d6bbad03d9c4d86ad09858de",
    "heroes": [
     {
      "id": "6794",
@@ -426,6 +433,7 @@ const WEEK3_DATA = {
    ]
   },
   {
+   "marquee": false,
    "home": "Dev",
    "homeTeam": "Develeper",
    "homeRecord": "0-1",
@@ -436,7 +444,13 @@ const WEEK3_DATA = {
    "awayProj": 154.26,
    "homeWin": 11.6,
    "awayWin": 88.4,
-   "seriesLine": "Alan leads 3-2",
+   "seriesLine": "Alan leads Dev 3\u20132 (Reg. 3\u20132; Post. 0\u20130)",
+   "seriesCls": "away",
+   "badge": "LINEUP WATCH",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Alan leads 3\u20132 all-time. Alan brings the current edge, led by Goff and Henry; Dev answers with Brock Purdy at 20.88.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/bcd2b370afd6f81e8fe910a9ecd39210",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/9be923b391e89fd671e501f4695c5c00",
    "heroes": [
     {
      "id": "8183",
@@ -847,6 +861,7 @@ const WEEK3_DATA = {
    ]
   },
   {
+   "marquee": false,
    "home": "Varun",
    "homeTeam": "Every kiss begins wth Zay",
    "homeRecord": "0-1",
@@ -854,10 +869,16 @@ const WEEK3_DATA = {
    "awayTeam": "Concepts of a Team",
    "awayRecord": "1-0",
    "homeProj": 128.67,
-   "awayProj": 131.57,
-   "homeWin": 45.5,
-   "awayWin": 54.5,
-   "seriesLine": "Manas leads 4-0",
+   "awayProj": 128.97,
+   "homeWin": 49.5,
+   "awayWin": 50.5,
+   "seriesLine": "Manas leads Varun 4\u20130 (Reg. 4\u20130; Post. 0\u20130)",
+   "seriesCls": "away",
+   "badge": "RAZOR THIN",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Manas has never lost this series. Manas brings the current edge, led by Smith-Njigba and Hurts; Varun answers with Patrick Mahomes at 21.49.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/82aec8e811b839b8ec25d7b458afd57b",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/8fcf0e0e6a75e96a591d2a4a4a400f41",
    "heroes": [
     {
      "id": "4046",
@@ -918,20 +939,20 @@ const WEEK3_DATA = {
      "n": 0
     },
     {
-     "pts": 92.85,
-     "n": 9
-    },
-    {
-     "pts": 11.03,
-     "n": 1
+     "pts": 81.5,
+     "n": 8
     },
     {
      "pts": 0.0,
      "n": 0
     },
     {
-     "pts": 27.69,
-     "n": 2
+     "pts": 7.97,
+     "n": 1
+    },
+    {
+     "pts": 39.5,
+     "n": 3
     }
    ],
    "windows": [
@@ -981,13 +1002,13 @@ const WEEK3_DATA = {
    ],
    "homeBullets": [
     "Patrick Mahomes, Breece Hall and George Pickens combine for 47.37 projected points \u2014 Varun's core of this lineup.",
-    "Dalton Kincaid projects 3.61 points ahead of Pat Freiermuth at TE \u2014 the biggest single-slot edge in this matchup.",
-    "Manas lists DJ Moore (OUT) in the supplied lineup. An absence there changes the math before kickoff."
+    "Nakobe Dean projects 4.93 points ahead of Anthony Hill at IDP_FLEX \u2014 the biggest single-slot edge in this matchup.",
+    "Manas lists Nick Cross (Q) in the supplied lineup. An absence there changes the math before kickoff."
    ],
    "awayBullets": [
     "Jaxon Smith-Njigba, Jalen Hurts and Chase Brown combine for 51.93 projected points \u2014 Manas's core of this lineup.",
     "Jaxon Smith-Njigba projects 7.32 points ahead of George Pickens at WR \u2014 the biggest single-slot edge in this matchup.",
-    "Manas keeps 2 starters alive into the late windows \u2014 the final answer comes after Varun's lineup finishes."
+    "Manas keeps 4 starters alive into the late windows \u2014 the final answer comes after Varun's lineup finishes."
    ],
    "homeLineup": [
     {
@@ -1149,13 +1170,13 @@ const WEEK3_DATA = {
     {
      "slot": "RB",
      "at": false,
-     "name": "Bucky Irving",
-     "team": "TB",
-     "opp": "MIN",
-     "proj": 11.03,
+     "name": "D'Andre Swift",
+     "team": "CHI",
+     "opp": "PHI",
+     "proj": 11.81,
      "injury": "",
-     "window": "SUN PM",
-     "id": "11584"
+     "window": "MON",
+     "id": "6790"
     },
     {
      "slot": "WR",
@@ -1170,14 +1191,14 @@ const WEEK3_DATA = {
     },
     {
      "slot": "WR",
-     "at": false,
-     "name": "DJ Moore",
-     "team": "BUF",
-     "opp": "LAC",
-     "proj": 9.88,
-     "injury": "OUT",
+     "at": true,
+     "name": "Jalen Coker",
+     "team": "CAR",
+     "opp": "CLE",
+     "proj": 12.68,
+     "injury": "",
      "window": "SUN EARLY",
-     "id": "4983"
+     "id": "11646"
     },
     {
      "slot": "TE",
@@ -1193,13 +1214,13 @@ const WEEK3_DATA = {
     {
      "slot": "FLEX",
      "at": true,
-     "name": "Jalen Coker",
-     "team": "CAR",
-     "opp": "CLE",
-     "proj": 12.68,
+     "name": "Davante Adams",
+     "team": "LAR",
+     "opp": "DEN",
+     "proj": 7.97,
      "injury": "",
-     "window": "SUN EARLY",
-     "id": "11646"
+     "window": "SUN NIGHT",
+     "id": "2133"
     },
     {
      "slot": "K",
@@ -1247,18 +1268,19 @@ const WEEK3_DATA = {
     },
     {
      "slot": "IDP_FLEX",
-     "at": false,
-     "name": "Jacob Rodriguez",
-     "team": "MIA",
-     "opp": "KC",
-     "proj": 5.6,
+     "at": true,
+     "name": "Anthony Hill",
+     "team": "TEN",
+     "opp": "NYG",
+     "proj": 4.13,
      "injury": "",
      "window": "SUN EARLY",
-     "id": "13453"
+     "id": "13365"
     }
    ]
   },
   {
+   "marquee": false,
    "home": "Achal",
    "homeTeam": "Its your bye week ",
    "homeRecord": "0-1",
@@ -1269,7 +1291,13 @@ const WEEK3_DATA = {
    "awayProj": 136.3,
    "homeWin": 5.5,
    "awayWin": 94.5,
-   "seriesLine": "Achal leads 3-2",
+   "seriesLine": "Achal leads Vaibhav 3\u20132 (Reg. 2\u20132; Post. 1\u20130)",
+   "seriesCls": "home",
+   "badge": "BLOWOUT POTENTIAL",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Achal leads 3\u20132 all-time. Vaibhav brings the current edge, led by Herbert and St. Brown; Achal answers with Malik Willis at 17.51.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/e7af4deab0289b4f5505646424895246",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/0cab8164a4f51e3aedb9729b4221bffe",
    "heroes": [
     {
      "id": "8161",
@@ -1680,6 +1708,7 @@ const WEEK3_DATA = {
    ]
   },
   {
+   "marquee": false,
    "home": "Taylor",
    "homeTeam": "Fannin the Flames",
    "homeRecord": "0-1",
@@ -1690,7 +1719,13 @@ const WEEK3_DATA = {
    "awayProj": 121.82,
    "homeWin": 58.0,
    "awayWin": 42.0,
-   "seriesLine": "Taylor leads 6-1",
+   "seriesLine": "Taylor leads Dhiraj 6\u20131 (Reg. 5\u20131; Post. 1\u20130)",
+   "seriesCls": "home",
+   "badge": "",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Someone gets their first win. Taylor brings the current edge, led by Allen and Barkley; Dhiraj answers with Baker Mayfield at 14.78.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/13b3abfb116819fffaf9cedfb5734d61",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/8eb8f8bf999945d523f2c4033f70473e",
    "heroes": [
     {
      "id": "4984",
@@ -2119,6 +2154,7 @@ const WEEK3_DATA = {
    ]
   },
   {
+   "marquee": false,
    "home": "Soham",
    "homeTeam": "The RB shelter",
    "homeRecord": "0-1",
@@ -2129,7 +2165,13 @@ const WEEK3_DATA = {
    "awayProj": 139.02,
    "homeWin": 22.1,
    "awayWin": 77.9,
-   "seriesLine": "Shiamak leads 5-2",
+   "seriesLine": "Shiamak leads Soham 5\u20132 (Reg. 5\u20131; Post. 0\u20131)",
+   "seriesCls": "away",
+   "badge": "LINEUP WATCH",
+   "meetTag": "TWO MEETINGS THIS SEASON",
+   "oneLiner": "Shiamak leads 5\u20132 all-time. Shiamak brings the current edge, led by Jackson and Gibbs; Soham answers with Jaxson Dart at 19.01.",
+   "homeAvatar": "https://sleepercdn.com/avatars/thumbs/ab5692c5f3357dbd2533d4e22db11ba9",
+   "awayAvatar": "https://sleepercdn.com/avatars/thumbs/8eb8f8bf999945d523f2c4033f70473e",
    "heroes": [
     {
      "id": "12508",

@@ -96,7 +96,22 @@ for r in rosters:
         "team": (u.get("metadata") or {}).get("team_name") or u.get("display_name", "?"),
         "record": f"{s.get('wins', 0)}-{s.get('losses', 0)}"
                   + (f"-{s.get('ties', 0)}" if s.get("ties") else ""),
+        "wins": s.get("wins", 0), "losses": s.get("losses", 0),
+        "avatar": f"https://sleepercdn.com/avatars/thumbs/{u['avatar']}" if u.get("avatar") else "",
     }
+
+print("counting 2026 season meetings per pairing ...")
+season_meetings = {}
+owner_by_rid = {rid: v["owner"] for rid, v in roster_info.items()}
+for wk in range(1, (league["settings"].get("playoff_week_start") or 15)):
+    pr = {}
+    for m in get(f"/v1/league/{LEAGUE_ID}/matchups/{wk}"):
+        if m.get("matchup_id") is not None:
+            pr.setdefault(m["matchup_id"], []).append(m["roster_id"])
+    for ids in pr.values():
+        if len(ids) == 2:
+            key = frozenset(owner_by_rid[i] for i in ids)
+            season_meetings[key] = season_meetings.get(key, 0) + 1
 
 print("walking league history chain for head-to-head ...")
 history = []
@@ -200,6 +215,8 @@ for mid, (ma, mb) in pairs.items():
     if B["owner"] in ORDER and A["owner"] not in ORDER:
         A, B = B, A
     diff = A["total"] - B["total"]
+    fav, dog = (A, B) if diff >= 0 else (B, A)
+    fav_win = win_pct(abs(diff))
     h2h = [g for g in history
            if {g["a"], g["b"]} == {A["owner"], B["owner"]} and g["season"] != league["season"]]
     h2h_rows = []
@@ -211,16 +228,82 @@ for mid, (ma, mb) in pairs.items():
         h2h_rows.append({"season": g["season"], "wk": g["wk"], "bracket": g["bracket"],
                          "homePts": round(pa, 2), "awayPts": round(pb, 2),
                          "winner": winner, "margin": round(abs(pa - pb), 2)})
+    # Newsletter-style series line with Reg./Post. split, from leader's perspective
+    def wins_in(bracket, who):
+        return sum(1 for g in h2h if g["bracket"] == bracket
+                   and ((g["a"] == who and g["pa"] > g["pb"]) or (g["b"] == who and g["pb"] > g["pa"])))
+    reg_a, post_a = wins_in("Regular", A["owner"]), wins_in("Postseason", A["owner"])
+    reg_b = sum(1 for g in h2h if g["bracket"] == "Regular") - reg_a
+    post_b = sum(1 for g in h2h if g["bracket"] == "Postseason") - post_a
+    if a_wins >= b_wins and a_wins > 0 and a_wins != b_wins:
+        series_full = (f"{A['owner']} leads {B['owner']} {a_wins}–{b_wins} "
+                       f"(Reg. {reg_a}–{reg_b}; Post. {post_a}–{post_b})")
+        series_cls = "home"
+    elif b_wins > a_wins:
+        series_full = (f"{B['owner']} leads {A['owner']} {b_wins}–{a_wins} "
+                       f"(Reg. {reg_b}–{reg_a}; Post. {post_b}–{post_a})")
+        series_cls = "away"
+    else:
+        series_full = (f"Series tied {a_wins}–{b_wins} "
+                       f"(Reg. {reg_a}–{reg_b}; Post. {post_a}–{post_b})")
+        series_cls = "even"
+
+    meets = season_meetings.get(frozenset([A["owner"], B["owner"]]), 0)
+    series_leader = A["owner"] if a_wins > b_wins else B["owner"] if b_wins > a_wins else None
+
+    # Left tag: marquee rivalry (storied series, single meeting this season) or meeting count
+    if meets == 1 and len(h2h) >= 5:
+        meet_tag, marquee = "MARQUEE RIVALRY", True
+    elif meets == 2:
+        meet_tag, marquee = "TWO MEETINGS THIS SEASON", False
+    else:
+        meet_tag, marquee = ("ONE MEETING THIS SEASON" if meets == 1 else ""), False
+
+    # Badge, data-derived, newsletter vocabulary
+    out_flag = [p for p in A["lineup"] + B["lineup"] if p["injury"] == "OUT"]
+    if abs(diff) < 5:
+        badge = "RAZOR THIN"
+    elif fav_win >= 90:
+        badge = "BLOWOUT POTENTIAL"
+    elif out_flag:
+        badge = "LINEUP WATCH"
+    elif series_leader and series_leader == dog["owner"]:
+        badge = "FAVORITE'S EDGE"
+    else:
+        badge = ""
+
+    # One-line commentary in the newsletter's cadence
+    def top_skill(side, n=2):
+        sk = [p for p in side["lineup"] if p["slot"] not in ("DL", "LB", "DB", "IDP_FLEX", "K")]
+        return sorted(sk, key=lambda p: -p["proj"])[:n]
+    def last_name(full):
+        return full.split(" ", 1)[1] if " " in full else full
+    if A["record"] == B["record"] and A["losses"] == 0 and A["wins"] > 0:
+        hook = f"Someone leaves {A['wins'] + 1}–0."
+    elif A["record"] == B["record"] and A["wins"] == 0 and A["losses"] > 0:
+        hook = "Someone gets their first win."
+    elif series_leader and min(a_wins, b_wins) == 0 and max(a_wins, b_wins) >= 3:
+        hook = f"{series_leader} has never lost this series."
+    elif series_leader:
+        hook = f"{series_leader} leads {max(a_wins, b_wins)}–{min(a_wins, b_wins)} all-time."
+    else:
+        hook = f"The series is tied {a_wins}–{b_wins}."
+    ft, dt = top_skill(fav), top_skill(dog, 1)[0]
+    one_liner = (f"{hook} {fav['owner']} brings the current edge, led by "
+                 f"{last_name(ft[0]['name'])} and {last_name(ft[1]['name'])}; "
+                 f"{dog['owner']} answers with {dt['name']} at {dt['proj']:.2f}.")
+
     heroes = sorted(A["lineup"], key=lambda p: -p["proj"])[:3] + \
              sorted(B["lineup"], key=lambda p: -p["proj"])[:3]
     built[A["owner"]] = {
+        "marquee": marquee,
         "home": A["owner"], "homeTeam": A["team"], "homeRecord": A["record"],
         "away": B["owner"], "awayTeam": B["team"], "awayRecord": B["record"],
         "homeProj": A["total"], "awayProj": B["total"],
         "homeWin": win_pct(diff), "awayWin": win_pct(-diff),
-        "seriesLine": (f"{A['owner']} leads {a_wins}-{b_wins}" if a_wins > b_wins
-                       else f"{B['owner']} leads {b_wins}-{a_wins}" if b_wins > a_wins
-                       else f"Series tied {a_wins}-{b_wins}"),
+        "seriesLine": series_full, "seriesCls": series_cls,
+        "badge": badge, "meetTag": meet_tag, "oneLiner": one_liner,
+        "homeAvatar": A["avatar"], "awayAvatar": B["avatar"],
         "heroes": [{"id": p["id"], "name": p["name"], "team": p["team"]} for p in heroes],
         "swingHome": A["swings"], "swingAway": B["swings"], "windows": WINDOWS,
         "h2h": h2h_rows,

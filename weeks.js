@@ -36,6 +36,8 @@ const WEEKS = [
     title: "Week 3",
     dates: "September 24–28, 2026",
     tagline: "Six matchups set. The full newsletter drops before kickoff.",
+    banner: "Everyone meets again.",
+    bannerSub: "All six matchups are second meetings of the season. Round one is on the books — the rematches start Thursday.",
     preview: true,
     matchups: [
       {
