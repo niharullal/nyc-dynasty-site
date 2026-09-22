@@ -393,6 +393,11 @@ WEEKS.forEach(w => {
   });
 });
 
+// --- Standings tab ---
+const standingsPanel = makeTab("standings", "Standings");
+standingsPanel.innerHTML = '<div class="card"><span class="status-note">Loading league data from Sleeper…</span></div>';
+let standingsLoaded = false;
+
 // --- Playbook tab ---
 const PLAYBOOK_PDF = "playbook/NYC-Dynasty-Commissioners-Playbook-2026-27.pdf";
 const playbookPanel = makeTab("playbook", "Playbook");
@@ -405,11 +410,6 @@ playbookPanel.innerHTML =
   "</div>" +
   '<iframe class="pdf-frame" src="' + PLAYBOOK_PDF + '" title="NYC Dynasty Commissioner’s Playbook 2026–27"></iframe>' +
   '<div class="preview-note">If the viewer doesn’t load on your phone, use the full-screen or download link above.</div>';
-
-// --- Standings tab ---
-const standingsPanel = makeTab("standings", "Standings");
-standingsPanel.innerHTML = '<div class="card"><span class="status-note">Loading league data from Sleeper…</span></div>';
-let standingsLoaded = false;
 
 async function loadStandings() {
   if (standingsLoaded) return;
