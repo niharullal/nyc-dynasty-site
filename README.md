@@ -26,3 +26,17 @@ Matchup pairings come from the Sleeper API:
 `https://api.sleeper.app/v1/league/1312585067658223616/matchups/<week>`
 (pair rosters sharing a `matchup_id`; map `roster_id` → owner via the
 `/rosters` and `/users` endpoints).
+
+## Full auto-generated week preview (newsletter-style)
+
+`python tools/build_week3_data.py` regenerates `week3-data.js` from live Sleeper
+data: current submitted starters, per-player projections scored with this
+league's settings, win odds (Phi(gap/25.4), matching the newsletter's model),
+kickoff-window splits, and verified all-time head-to-head. Re-run whenever
+lineups change, bump the `week3-data.js?v=N` tag in `index.html`, commit, push.
+
+The Week 3 tab renders this full layout automatically while the week's entry in
+`weeks.js` has `preview: true`; the commissioner's real newsletter images
+replace it as usual once added. Old-account aliases for historical H2H
+(verified against newsletter scores): 1stInLastOut/VaibhavS96 = Vaibhav,
+FalconsAlterego = Achal, DhirajBanda = Dhiraj.

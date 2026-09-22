@@ -253,6 +253,63 @@
   }
   .error-note { color: var(--red); font-size: 14px; }
 
+  /* Full newsletter-style week preview */
+  .nl-gen { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .nl-over { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 30px; }
+  .nl-over-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 16px; display: block; text-decoration: none; color: var(--text);
+  }
+  .nl-over-card:hover { border-color: var(--green); }
+  .nl-over-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .nl-over-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .05em; text-transform: uppercase; }
+  .nl-over-name .rec { color: var(--muted); font-size: 14px; font-weight: 500; margin-left: 6px; }
+  .nl-over-proj { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 26px; font-variant-numeric: tabular-nums; }
+  .nl-blue { color: var(--blue); } .nl-red { color: var(--red); }
+  .nl-winbar { height: 5px; border-radius: 3px; background: var(--red); margin-top: 10px; overflow: hidden; }
+  .nl-winbar > div { height: 100%; background: var(--blue); }
+  .nl-over-sub { display: flex; justify-content: space-between; color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+  .nl-match { border-top: 3px solid var(--border); margin-top: 38px; padding-top: 26px; scroll-margin-top: 16px; }
+  .nl-match-title { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: clamp(26px, 5vw, 40px); text-transform: uppercase; letter-spacing: .02em; }
+  .nl-match-title .vs { color: var(--muted); font-size: .6em; margin: 0 8px; }
+  .nl-heroes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 16px 0; }
+  .nl-hero { text-align: center; }
+  .nl-hero img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--border); }
+  .nl-hero div { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-top: 4px; }
+  .nl-score { display: flex; align-items: center; justify-content: space-between; gap: 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; }
+  .nl-score .side { flex: 1; }
+  .nl-score .side.right { text-align: right; }
+  .nl-score .who { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: .06em; }
+  .nl-score .team { color: var(--muted); font-size: 12.5px; }
+  .nl-score .num { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 34px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .nl-score .pct { font-size: 13px; color: var(--muted); }
+  .nl-sec { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 18px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin: 22px 0 10px; }
+  .nl-narrative { color: var(--text); font-size: 15px; line-height: 1.55; margin-top: 14px; }
+  .nl-swing { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .nl-swing th, .nl-swing td { padding: 7px 8px; border-bottom: 1px solid var(--panel-2); text-align: center; }
+  .nl-swing td.lbl, .nl-swing th.lbl { text-align: left; font-family: "Barlow Condensed", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  .nl-swing .n { display: block; color: var(--muted); font-size: 11px; }
+  .nl-how { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .nl-how-card { border-radius: 8px; padding: 14px 16px; border: 1px solid var(--border); }
+  .nl-how-card.blue { background: rgba(74,168,255,.06); border-color: rgba(74,168,255,.35); }
+  .nl-how-card.red { background: rgba(255,90,106,.06); border-color: rgba(255,90,106,.35); }
+  .nl-how-card h4 { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  .nl-how-card ul { margin-left: 16px; }
+  .nl-how-card li { font-size: 13.5px; line-height: 1.5; margin-bottom: 8px; }
+  .nl-lineups { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .nl-lineup table { font-size: 13px; }
+  .nl-lineup th, .nl-lineup td { padding: 6px 6px; }
+  .nl-lineup .slot { color: var(--muted); font-family: "Barlow Condensed", sans-serif; font-weight: 700; width: 34px; }
+  .nl-lineup .opp { color: var(--muted); }
+  .nl-lineup .hdr { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .tag-q, .tag-out { font-size: 10px; font-weight: 700; border-radius: 3px; padding: 1px 4px; margin-left: 5px; vertical-align: middle; }
+  .tag-q { background: #4d3d12; color: #ffd166; }
+  .tag-out { background: #4d1a20; color: var(--red); }
+  @media (max-width: 640px) {
+    .nl-how, .nl-lineups { grid-template-columns: 1fr; }
+    .nl-heroes { grid-template-columns: repeat(3, 1fr); }
+  }
+
   /* Playbook PDF viewer */
   .pdf-link { color: var(--blue); }
   .pdf-frame {
@@ -287,6 +344,7 @@
 <footer>Newsletter pages by the commissioner. Live standings via the Sleeper API.</footer>
 
 <script src="weeks.js?v=4"></script>
+<script src="week3-data.js?v=1"></script>
 <script>
 const LEAGUE_ID = "1312585067658223616";
 
@@ -328,6 +386,11 @@ WEEKS.forEach(w => {
     '<div class="week-dates">' + w.title + " · " + w.dates + "</div>" +
     '<div class="week-tagline">' + w.tagline + "</div>";
   panel.appendChild(head);
+
+  if (w.preview && w.matchups && typeof WEEK3_DATA !== "undefined" && WEEK3_DATA.week === w.week) {
+    renderFullPreview(panel, w, WEEK3_DATA);
+    return;
+  }
 
   if (w.preview && w.matchups) {
     const h = document.createElement("h3");
@@ -392,6 +455,121 @@ WEEKS.forEach(w => {
     panel.appendChild(sec);
   });
 });
+
+// --- Full newsletter-style preview renderer ---
+function slotLabel(s) { return s === "IDP_FLEX" ? "IDP" : s; }
+
+function injTag(p) {
+  if (p.injury === "OUT") return '<span class="tag-out">OUT</span>';
+  if (p.injury) return '<span class="tag-q">' + p.injury + "</span>";
+  return "";
+}
+
+function lineupTable(owner, cls, lineup) {
+  var rows = "";
+  lineup.forEach(function (p) {
+    rows += "<tr><td class=\"slot\">" + slotLabel(p.slot) + "</td>" +
+      "<td>" + p.name + injTag(p) + "</td>" +
+      "<td class=\"opp\">" + (p.team ? p.team + " · " : "") + (p.opp === "BYE" ? "BYE" : (p.at ? "@ " : "vs ") + p.opp) + "</td>" +
+      "<td class=\"num\">" + p.proj.toFixed(2) + "</td></tr>";
+  });
+  return '<div class="nl-lineup"><div class="hdr ' + cls + '">' + owner + "</div>" +
+    "<table><tbody>" + rows + "</tbody></table></div>";
+}
+
+function renderFullPreview(panel, w, data) {
+  var html = "";
+
+  // Overview cards
+  html += '<h3 class="nl-sec" style="margin-top:0">This Week’s Matchups</h3>' +
+    '<div class="nl-gen" style="margin:-4px 0 12px">Source: current submitted lineups · Sleeper projections · modeled win chance · generated ' + data.generatedAt + "</div>" +
+    '<div class="nl-over">';
+  data.matchups.forEach(function (m, i) {
+    html += '<a class="nl-over-card" href="#nl-m' + i + '">' +
+      '<div class="nl-over-top">' +
+      '<div class="nl-over-name nl-blue">' + m.home + '<span class="rec">' + m.homeRecord + "</span></div>" +
+      '<div class="nl-over-proj"><span class="nl-blue">' + m.homeProj.toFixed(2) + '</span>' +
+      '<span style="color:var(--muted);font-size:.55em"> vs </span>' +
+      '<span class="nl-red">' + m.awayProj.toFixed(2) + "</span></div>" +
+      '<div class="nl-over-name nl-red">' + m.away + '<span class="rec">' + m.awayRecord + "</span></div>" +
+      "</div>" +
+      '<div class="nl-winbar"><div style="width:' + m.homeWin + '%"></div></div>' +
+      '<div class="nl-over-sub"><span>' + m.homeWin.toFixed(1) + "% win</span>" +
+      "<span>" + m.seriesLine + "</span>" +
+      "<span>" + m.awayWin.toFixed(1) + "% win</span></div>" +
+      "</a>";
+  });
+  html += "</div>";
+
+  // Per-matchup sections
+  data.matchups.forEach(function (m, i) {
+    var wm = (w.matchups[i] && w.matchups[i].home === m.home) ? w.matchups[i] : null;
+    html += '<section class="nl-match" id="nl-m' + i + '">' +
+      '<div class="nl-match-title"><span class="nl-blue">' + m.home + '</span><span class="vs">VS</span><span class="nl-red">' + m.away + "</span></div>";
+
+    html += '<div class="nl-heroes">';
+    m.heroes.forEach(function (p) {
+      html += '<div class="nl-hero"><img loading="lazy" src="https://sleepercdn.com/content/nfl/players/thumb/' + p.id + '.jpg" alt="" onerror="this.style.visibility=\'hidden\'">' +
+        "<div>" + p.name + "</div></div>";
+    });
+    html += "</div>";
+
+    html += '<div class="nl-score">' +
+      '<div class="side"><div class="who nl-blue">' + m.home + '</div><div class="team">' + m.homeTeam + " · " + m.homeRecord + "</div></div>" +
+      '<div><div class="num nl-blue">' + m.homeProj.toFixed(2) + '</div><div class="pct">' + m.homeWin.toFixed(1) + "% win</div></div>" +
+      '<div class="preview-vs">VS</div>' +
+      '<div style="text-align:right"><div class="num nl-red">' + m.awayProj.toFixed(2) + '</div><div class="pct">' + m.awayWin.toFixed(1) + "% win</div></div>" +
+      '<div class="side right"><div class="who nl-red">' + m.away + '</div><div class="team">' + m.awayTeam + " · " + m.awayRecord + "</div></div>" +
+      "</div>";
+
+    if (wm) {
+      html += '<div class="preview-series">' + wm.series + "</div>" +
+        '<div class="nl-narrative">' + wm.blurb + "</div>";
+    }
+
+    html += '<h3 class="nl-sec">When It Swings</h3><table class="nl-swing"><thead><tr><th class="lbl"></th>';
+    m.windows.forEach(function (lbl) { html += "<th>" + lbl + "</th>"; });
+    html += "</tr></thead><tbody>";
+    [["nl-blue", m.home, m.swingHome], ["nl-red", m.away, m.swingAway]].forEach(function (row) {
+      html += '<tr><td class="lbl ' + row[0] + '">' + row[1] + "</td>";
+      row[2].forEach(function (s) {
+        html += "<td>" + (s.n ? s.pts.toFixed(1) + '<span class="n">' + s.n + " starter" + (s.n > 1 ? "s" : "") + "</span>" : '<span style="color:var(--muted)">—</span>') + "</td>";
+      });
+      html += "</tr>";
+    });
+    html += "</tbody></table>";
+
+    if (m.h2h.length) {
+      html += '<h3 class="nl-sec">Head-to-Head History</h3><table><thead><tr><th>Season</th><th>Wk</th><th>Bracket</th>' +
+        '<th class="num">' + m.home + '</th><th class="num">' + m.away + '</th><th>Winner</th><th class="num">Margin</th></tr></thead><tbody>';
+      m.h2h.forEach(function (g) {
+        var wcls = g.winner === m.home ? "nl-blue" : "nl-red";
+        html += "<tr><td>" + g.season + "</td><td>" + g.wk + "</td><td>" + g.bracket + "</td>" +
+          '<td class="num">' + g.homePts.toFixed(2) + '</td><td class="num">' + g.awayPts.toFixed(2) + "</td>" +
+          '<td class="' + wcls + '">' + g.winner + '</td><td class="num">+' + g.margin.toFixed(2) + "</td></tr>";
+      });
+      html += "</tbody></table>";
+    }
+
+    html += '<h3 class="nl-sec">How They Win</h3><div class="nl-how">' +
+      '<div class="nl-how-card blue"><h4 class="nl-blue">How ' + m.home + " Wins</h4><ul>" +
+      m.homeBullets.map(function (b) { return "<li>" + b + "</li>"; }).join("") + "</ul></div>" +
+      '<div class="nl-how-card red"><h4 class="nl-red">How ' + m.away + " Wins</h4><ul>" +
+      m.awayBullets.map(function (b) { return "<li>" + b + "</li>"; }).join("") + "</ul></div></div>";
+
+    html += '<h3 class="nl-sec">Submitted Starting Lineups</h3><div class="nl-lineups">' +
+      lineupTable(m.home, "nl-blue", m.homeLineup) +
+      lineupTable(m.away, "nl-red", m.awayLineup) + "</div>";
+
+    html += "</section>";
+  });
+
+  html += '<div class="preview-note">Auto-generated from current submitted lineups and Sleeper projections · win chance modeled on the newsletter’s methodology. The commissioner’s full Week ' + w.week + " edition replaces this when it drops.</div>";
+
+  var body = document.createElement("div");
+  body.innerHTML = html;
+  panel.appendChild(body);
+}
 
 // --- Standings tab ---
 const standingsPanel = makeTab("standings", "Standings");
