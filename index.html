@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYC Dynasty League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,700;0,800;1,600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c0a;
+    --panel: #121512;
+    --panel-2: #181c18;
+    --border: #262b26;
+    --text: #e8ece8;
+    --muted: #9aa39a;
+    --green: #3ddc71;
+    --blue: #4aa8ff;
+    --red: #ff5a6a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Barlow", system-ui, sans-serif;
+  }
+  header {
+    padding: 28px 20px 0;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .kicker {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    font-size: 13px;
+    color: var(--green);
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-size: clamp(38px, 7vw, 64px);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin: 6px 0 10px;
+  }
+  .rule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue) 0 33%, var(--red) 33% 66%, var(--green) 66% 100%);
+    margin-bottom: 18px;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px 18px;
+  }
+  .tab-btn {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    color: #0a0c0a;
+    background: var(--green);
+    border-color: var(--green);
+  }
+  main { max-width: 920px; margin: 0 auto; padding: 0 20px 60px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .week-head { margin: 10px 0 18px; }
+  .week-dates {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: var(--green);
+  }
+  .week-tagline { color: var(--muted); margin-top: 4px; font-size: 15px; }
+
+  .page-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .page-nav a {
+    font-size: 13px;
+    color: var(--blue);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    background: var(--panel);
+  }
+  .page-nav a:hover { border-color: var(--blue); }
+
+  .newsletter-page { margin-bottom: 34px; }
+  .newsletter-page h3 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 10px;
+    scroll-margin-top: 16px;
+  }
+  .newsletter-page img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: zoom-in;
+  }
+
+  /* Lightbox */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 50;
+    overflow: auto;
+    cursor: zoom-out;
+    text-align: center;
+  }
+  #lightbox.open { display: block; }
+  #lightbox img { max-width: none; width: min(1200px, 96vw); margin: 20px auto; display: block; }
+
+  /* Standings */
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .card h3 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td { padding: 9px 10px; border-bottom: 1px solid var(--panel-2); }
+  tr:last-child td { border-bottom: none; }
+  .team-cell { display: flex; align-items: center; gap: 10px; }
+  .team-cell img { width: 28px; height: 28px; border-radius: 50%; background: var(--panel-2); }
+  .team-name { font-weight: 600; }
+  .owner-name { color: var(--muted); font-size: 13px; }
+  .rank { color: var(--muted); width: 28px; }
+
+  .scoreboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .match {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .match .row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+  .match .pts { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .match .leader .pts { color: var(--green); }
+  .status-note { color: var(--muted); font-size: 14px; }
+
+  /* Light week preview (no newsletter yet) */
+  .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .preview-match {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .preview-side { flex: 1; }
+  .preview-side.right { text-align: right; }
+  .preview-owner {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .preview-side.left .preview-owner { color: var(--blue); }
+  .preview-side.right .preview-owner { color: var(--red); }
+  .preview-team { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .preview-vs {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .preview-note {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 18px;
+  }
+  .error-note { color: var(--red); font-size: 14px; }
+
+  footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">NYC Dynasty</div>
+  <h1>League Newsletter</h1>
+  <div class="rule"></div>
+</header>
+
+<nav id="tabs"></nav>
+<main id="panels"></main>
+
+<div id="lightbox" onclick="this.classList.remove('open')"><img id="lightbox-img" src="" alt=""></div>
+
+<footer>Newsletter pages by the commissioner. Live standings via the Sleeper API.</footer>
+
+<script src="weeks.js"></script>
+<script>
+const LEAGUE_ID = "1312585067658223616";
+
+const tabsEl = document.getElementById("tabs");
+const panelsEl = document.getElementById("panels");
+
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function makeTab(id, label) {
+  const btn = document.createElement("button");
+  btn.className = "tab-btn";
+  btn.textContent = label;
+  btn.dataset.target = id;
+  btn.addEventListener("click", () => activateTab(id));
+  tabsEl.appendChild(btn);
+  const panel = document.createElement("section");
+  panel.className = "tab-panel";
+  panel.id = id;
+  panelsEl.appendChild(panel);
+  return panel;
+}
+
+function activateTab(id) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.target === id));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.toggle("active", p.id === id));
+  if (id === "standings") loadStandings();
+  history.replaceState(null, "", "#" + id);
+}
+
+// --- Newsletter week tabs (newest first in WEEKS) ---
+WEEKS.forEach(w => {
+  const panel = makeTab("week-" + w.week, w.title);
+
+  const head = document.createElement("div");
+  head.className = "week-head";
+  head.innerHTML =
+    '<div class="week-dates">' + w.title + " · " + w.dates + "</div>" +
+    '<div class="week-tagline">' + w.tagline + "</div>";
+  panel.appendChild(head);
+
+  if (w.preview && w.matchups) {
+    const h = document.createElement("h3");
+    h.style.cssText = "font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin:0 0 12px";
+    h.textContent = "This Week's Matchups";
+    panel.appendChild(h);
+
+    const grid = document.createElement("div");
+    grid.className = "preview-grid";
+    w.matchups.forEach(m => {
+      const card = document.createElement("div");
+      card.className = "preview-match";
+      card.innerHTML =
+        '<div class="preview-side left"><div class="preview-owner">' + m.home + '</div>' +
+        '<div class="preview-team">' + m.homeTeam + "</div></div>" +
+        '<div class="preview-vs">VS</div>' +
+        '<div class="preview-side right"><div class="preview-owner">' + m.away + '</div>' +
+        '<div class="preview-team">' + m.awayTeam + "</div></div>";
+      grid.appendChild(card);
+    });
+    panel.appendChild(grid);
+
+    const note = document.createElement("div");
+    note.className = "preview-note";
+    note.textContent = "Projections, win odds, rivalry history, and matchup breakdowns arrive with the full Week " + w.week + " newsletter.";
+    panel.appendChild(note);
+    return;
+  }
+
+  if (w.pages.length > 1) {
+    const nav = document.createElement("div");
+    nav.className = "page-nav";
+    w.pages.forEach(p => {
+      const a = document.createElement("a");
+      a.href = "#w" + w.week + "-" + slugify(p.label);
+      a.textContent = p.label;
+      nav.appendChild(a);
+    });
+    panel.appendChild(nav);
+  }
+
+  w.pages.forEach(p => {
+    const sec = document.createElement("div");
+    sec.className = "newsletter-page";
+    const h = document.createElement("h3");
+    h.id = "w" + w.week + "-" + slugify(p.label);
+    h.textContent = p.label;
+    const img = document.createElement("img");
+    img.src = p.src;
+    img.alt = w.title + " — " + p.label;
+    img.loading = "lazy";
+    img.addEventListener("click", () => {
+      document.getElementById("lightbox-img").src = p.src;
+      document.getElementById("lightbox").classList.add("open");
+    });
+    sec.appendChild(h);
+    sec.appendChild(img);
+    panel.appendChild(sec);
+  });
+});
+
+// --- Standings tab ---
+const standingsPanel = makeTab("standings", "Standings");
+standingsPanel.innerHTML = '<div class="card"><span class="status-note">Loading league data from Sleeper…</span></div>';
+let standingsLoaded = false;
+
+async function loadStandings() {
+  if (standingsLoaded) return;
+  standingsLoaded = true;
+  const base = "https://api.sleeper.app/v1";
+  try {
+    const [users, rosters, state] = await Promise.all([
+      fetch(base + "/league/" + LEAGUE_ID + "/users").then(r => r.json()),
+      fetch(base + "/league/" + LEAGUE_ID + "/rosters").then(r => r.json()),
+      fetch(base + "/state/nfl").then(r => r.json())
+    ]);
+
+    const userById = {};
+    users.forEach(u => { userById[u.user_id] = u; });
+
+    const teams = rosters.map(r => {
+      const u = userById[r.owner_id] || {};
+      const meta = u.metadata || {};
+      const s = r.settings || {};
+      return {
+        rosterId: r.roster_id,
+        team: meta.team_name || u.display_name || ("Roster " + r.roster_id),
+        owner: u.display_name || "",
+        avatar: u.avatar ? "https://sleepercdn.com/avatars/thumbs/" + u.avatar : null,
+        wins: s.wins || 0,
+        losses: s.losses || 0,
+        ties: s.ties || 0,
+        pf: (s.fpts || 0) + (s.fpts_decimal || 0) / 100,
+        pa: (s.fpts_against || 0) + (s.fpts_against_decimal || 0) / 100
+      };
+    });
+    teams.sort((a, b) => (b.wins - a.wins) || (b.pf - a.pf));
+
+    let rows = "";
+    teams.forEach((t, i) => {
+      const avatarImg = t.avatar ? '<img src="' + t.avatar + '" alt="">' : "";
+      const ownerHtml = t.owner ? '<div class="owner-name">' + t.owner + "</div>" : "";
+      rows +=
+        "<tr>" +
+        '<td class="rank">' + (i + 1) + "</td>" +
+        '<td><div class="team-cell">' + avatarImg +
+          '<div><div class="team-name">' + t.team + "</div>" + ownerHtml + "</div></div></td>" +
+        '<td class="num">' + t.wins + "-" + t.losses + (t.ties ? "-" + t.ties : "") + "</td>" +
+        '<td class="num">' + t.pf.toFixed(2) + "</td>" +
+        '<td class="num">' + t.pa.toFixed(2) + "</td>" +
+        "</tr>";
+    });
+
+    let html =
+      '<div class="card"><h3>Standings</h3><table>' +
+      '<thead><tr><th></th><th>Team</th><th class="num">Record</th><th class="num">PF</th><th class="num">PA</th></tr></thead>' +
+      "<tbody>" + rows + "</tbody></table></div>";
+
+    // Current-week scoreboard
+    const week = state.season === "2026" ? state.week : null;
+    if (week) {
+      const matchups = await fetch(base + "/league/" + LEAGUE_ID + "/matchups/" + week).then(r => r.json());
+      if (Array.isArray(matchups) && matchups.length) {
+        const teamByRoster = {};
+        teams.forEach(t => { teamByRoster[t.rosterId] = t; });
+        const groups = {};
+        matchups.forEach(m => {
+          if (m.matchup_id == null) return;
+          (groups[m.matchup_id] = groups[m.matchup_id] || []).push(m);
+        });
+        let cards = "";
+        Object.values(groups).forEach(pair => {
+          if (pair.length !== 2) return;
+          const [a, b] = pair;
+          const aPts = Number(a.points || 0), bPts = Number(b.points || 0);
+          const aName = (teamByRoster[a.roster_id] || {}).team || "Roster " + a.roster_id;
+          const bName = (teamByRoster[b.roster_id] || {}).team || "Roster " + b.roster_id;
+          cards +=
+            '<div class="match">' +
+            '<div class="row' + (aPts >= bPts ? " leader" : "") + '"><span>' + aName + '</span><span class="pts">' + aPts.toFixed(2) + "</span></div>" +
+            '<div class="row' + (bPts > aPts ? " leader" : "") + '"><span>' + bName + '</span><span class="pts">' + bPts.toFixed(2) + "</span></div>" +
+            "</div>";
+        });
+        if (cards) {
+          html += '<div class="card"><h3>Week ' + week + " Scoreboard</h3><div class=\"scoreboard\">" + cards + "</div></div>";
+        }
+      }
+    }
+
+    standingsPanel.innerHTML = html;
+  } catch (err) {
+    standingsLoaded = false;
+    standingsPanel.innerHTML =
+      '<div class="card"><span class="error-note">Could not load league data from Sleeper (' +
+      (err && err.message ? err.message : "network error") +
+      "). Check your connection and reload.</span></div>";
+  }
+}
+
+// Open the tab from the URL hash if present, else the newest week.
+const initial = location.hash.slice(1);
+const validIds = Array.from(document.querySelectorAll(".tab-panel")).map(p => p.id);
+activateTab(validIds.includes(initial) ? initial : "week-" + WEEKS[WEEKS.length - 1].week);
+</script>
+</body>
+</html>
