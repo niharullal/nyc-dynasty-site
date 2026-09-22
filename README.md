@@ -15,6 +15,8 @@ Open `index.html` in a browser. No build step, no server required.
    the first entry is the default tab). Copy an existing entry as a template.
 3. If the week previously had a light preview entry (`preview: true`), replace
    that entry with the real `pages` entry.
+4. Bump the version number in the `<script src="weeks.js?v=N">` tag in
+   `index.html` so cached browsers pick up the new manifest immediately.
 
 ## Light preview weeks (no newsletter yet)
 
