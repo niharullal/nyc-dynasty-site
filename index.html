@@ -197,16 +197,33 @@
   .status-note { color: var(--muted); font-size: 14px; }
 
   /* Light week preview (no newsletter yet) */
-  .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .preview-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
   .preview-match {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 16px;
+  }
+  .preview-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+  }
+  .preview-series {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-top: 12px;
+  }
+  .preview-blurb {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 6px;
   }
   .preview-side { flex: 1; }
   .preview-side.right { text-align: right; }
@@ -235,6 +252,16 @@
     margin-top: 18px;
   }
   .error-note { color: var(--red); font-size: 14px; }
+
+  /* Playbook PDF viewer */
+  .pdf-link { color: var(--blue); }
+  .pdf-frame {
+    width: 100%;
+    height: 82vh;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+  }
 
   footer {
     max-width: 920px;
@@ -314,18 +341,22 @@ WEEKS.forEach(w => {
       const card = document.createElement("div");
       card.className = "preview-match";
       card.innerHTML =
+        '<div class="preview-top">' +
         '<div class="preview-side left"><div class="preview-owner">' + m.home + '</div>' +
         '<div class="preview-team">' + m.homeTeam + "</div></div>" +
         '<div class="preview-vs">VS</div>' +
         '<div class="preview-side right"><div class="preview-owner">' + m.away + '</div>' +
-        '<div class="preview-team">' + m.awayTeam + "</div></div>";
+        '<div class="preview-team">' + m.awayTeam + "</div></div>" +
+        "</div>" +
+        (m.series ? '<div class="preview-series">' + m.series + "</div>" : "") +
+        (m.blurb ? '<div class="preview-blurb">' + m.blurb + "</div>" : "");
       grid.appendChild(card);
     });
     panel.appendChild(grid);
 
     const note = document.createElement("div");
     note.className = "preview-note";
-    note.textContent = "Projections, win odds, rivalry history, and matchup breakdowns arrive with the full Week " + w.week + " newsletter.";
+    note.textContent = "Projections, win odds, and submitted lineups arrive with the full Week " + w.week + " newsletter.";
     panel.appendChild(note);
     return;
   }
@@ -361,6 +392,19 @@ WEEKS.forEach(w => {
     panel.appendChild(sec);
   });
 });
+
+// --- Playbook tab ---
+const PLAYBOOK_PDF = "playbook/NYC-Dynasty-Commissioners-Playbook-2026-27.pdf";
+const playbookPanel = makeTab("playbook", "Playbook");
+playbookPanel.innerHTML =
+  '<div class="week-head">' +
+  '<div class="week-dates">Commissioner’s Playbook · 2026–27 Season</div>' +
+  '<div class="week-tagline">The league, the history, the rules — all 66 pages. ' +
+  '<a class="pdf-link" href="' + PLAYBOOK_PDF + '" target="_blank" rel="noopener">Open full screen</a> · ' +
+  '<a class="pdf-link" href="' + PLAYBOOK_PDF + '" download>Download PDF</a></div>' +
+  "</div>" +
+  '<iframe class="pdf-frame" src="' + PLAYBOOK_PDF + '" title="NYC Dynasty Commissioner’s Playbook 2026–27"></iframe>' +
+  '<div class="preview-note">If the viewer doesn’t load on your phone, use the full-screen or download link above.</div>';
 
 // --- Standings tab ---
 const standingsPanel = makeTab("standings", "Standings");
