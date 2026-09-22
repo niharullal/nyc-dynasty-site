@@ -11,8 +11,8 @@ Open `index.html` in a browser. No build step, no server required.
 
 1. Create `newsletters/week-XX/` and copy the newsletter images in, numbered in
    reading order: `01-week-X-preview.jpeg`, `02-<matchup>.jpeg`, ...
-2. Add an entry to the **top** of the `WEEKS` array in `weeks.js` (newest first;
-   the first entry is the default tab). Copy an existing entry as a template.
+2. Add an entry to the **end** of the `WEEKS` array in `weeks.js` (oldest first;
+   the last entry opens by default). Copy an existing entry as a template.
 3. If the week previously had a light preview entry (`preview: true`), replace
    that entry with the real `pages` entry.
 4. Bump the version number in the `<script src="weeks.js?v=N">` tag in
