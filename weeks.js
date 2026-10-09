@@ -79,6 +79,7 @@ const WEEKS = [
     tagline: "Four teams are 3–0. Four are 0–3. Both lists shrink by Monday.",
     pages: [
       { src: "newsletters/week-04/01-week-4-preview.png", label: "Week 4 Preview" },
+      { src: "newsletters/week-04/02-advaith-vs-dev.png", label: "Advaith vs Dev" },
       { src: "newsletters/week-04/03-nihar-vs-manas.png", label: "Nihar vs Manas" },
       { src: "newsletters/week-04/04-alan-vs-vaibhav.png", label: "Alan vs Vaibhav" },
       { src: "newsletters/week-04/05-nishant-vs-taylor.png", label: "Nishant vs Taylor" },
@@ -90,12 +91,14 @@ const WEEKS = [
     week: 5,
     title: "Week 5",
     dates: "October 8–12, 2026",
-    tagline: "Nihar chases 5–0. Achal and Dhiraj chase win one.",
+    tagline: "Week 5 raises the stakes. Three teams are 4–0. Three are 0–4.",
     pages: [
+      { src: "newsletters/week-05/01-week-5-preview.png", label: "Week 5 Preview" },
       { src: "newsletters/week-05/02-advaith-vs-manas.png", label: "Advaith vs Manas" },
       { src: "newsletters/week-05/03-dev-vs-vaibhav.png", label: "Dev vs Vaibhav" },
       { src: "newsletters/week-05/04-nihar-vs-taylor.png", label: "Nihar vs Taylor" },
       { src: "newsletters/week-05/05-soham-vs-alan.png", label: "Soham vs Alan" },
+      { src: "newsletters/week-05/06-nishant-vs-shiamak.png", label: "Nishant vs Shiamak" },
       { src: "newsletters/week-05/07-achal-vs-dhiraj.png", label: "Achal vs Dhiraj" }
     ]
   }
