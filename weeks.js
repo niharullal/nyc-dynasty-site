@@ -71,5 +71,32 @@ const WEEKS = [
         blurb: "Shiamak has taken four straight meetings and owns the regular-season series 5–1. But Soham holds the one that stung most — a 51-point knockout in the 2022 postseason. He has been chasing that high ever since."
       }
     ]
+  },
+  {
+    week: 4,
+    title: "Week 4",
+    dates: "October 1–5, 2026",
+    tagline: "Four teams are 3–0. Four are 0–3. Both lists shrink by Monday.",
+    pages: [
+      { src: "newsletters/week-04/01-week-4-preview.png", label: "Week 4 Preview" },
+      { src: "newsletters/week-04/03-nihar-vs-manas.png", label: "Nihar vs Manas" },
+      { src: "newsletters/week-04/04-alan-vs-vaibhav.png", label: "Alan vs Vaibhav" },
+      { src: "newsletters/week-04/05-nishant-vs-taylor.png", label: "Nishant vs Taylor" },
+      { src: "newsletters/week-04/06-soham-vs-achal.png", label: "Soham vs Achal" },
+      { src: "newsletters/week-04/07-shiamak-vs-dhiraj.png", label: "Shiamak vs Dhiraj" }
+    ]
+  },
+  {
+    week: 5,
+    title: "Week 5",
+    dates: "October 8–12, 2026",
+    tagline: "Nihar chases 5–0. Achal and Dhiraj chase win one.",
+    pages: [
+      { src: "newsletters/week-05/02-advaith-vs-manas.png", label: "Advaith vs Manas" },
+      { src: "newsletters/week-05/03-dev-vs-vaibhav.png", label: "Dev vs Vaibhav" },
+      { src: "newsletters/week-05/04-nihar-vs-taylor.png", label: "Nihar vs Taylor" },
+      { src: "newsletters/week-05/05-soham-vs-alan.png", label: "Soham vs Alan" },
+      { src: "newsletters/week-05/07-achal-vs-dhiraj.png", label: "Achal vs Dhiraj" }
+    ]
   }
 ];

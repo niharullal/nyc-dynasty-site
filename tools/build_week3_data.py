@@ -29,7 +29,8 @@ WEEK = 3
 NAME = {"adv1996": "Advaith", "nigeluno02": "Nihar", "Develeper": "Dev",
         "alanadams": "Alan", "chutneyman": "Varun", "swagrawal": "Manas",
         "AchalK": "Achal", "VS96": "Vaibhav", "taylorjgardner1996": "Taylor",
-        "Dbanda23": "Dhiraj", "sohamdeval": "Soham", "shiamak": "Shiamak"}
+        "Dbanda23": "Dhiraj", "sohamdeval": "Soham", "shiamak": "Shiamak",
+        "nreddy37": "Nishant"}  # Nishant took over Varun's roster before Week 4, 2026
 # Managers who used different Sleeper accounts in earlier seasons
 # (identities verified against scores printed in the commissioner's newsletters).
 ALIAS = {"1stInLastOut": "Vaibhav", "VaibhavS96": "Vaibhav",
