@@ -103,6 +103,21 @@ const WEEKS = [
     ]
   },
   {
+    week: 6,
+    title: "Week 6",
+    dates: "October 15–19, 2026",
+    tagline: "Two unbeaten teams. Six new tests. Alan and Nihar are still 5–0.",
+    pages: [
+      { src: "newsletters/week-06/01-week-6-preview.png", label: "Week 6 Preview" },
+      { src: "newsletters/week-06/02-advaith-vs-vaibhav.png", label: "Advaith vs Vaibhav" },
+      { src: "newsletters/week-06/03-manas-vs-taylor.png", label: "Manas vs Taylor" },
+      { src: "newsletters/week-06/04-soham-vs-dev.png", label: "Soham vs Dev" },
+      { src: "newsletters/week-06/05-nihar-vs-shiamak.png", label: "Nihar vs Shiamak" },
+      { src: "newsletters/week-06/06-alan-vs-dhiraj.png", label: "Alan vs Dhiraj" },
+      { src: "newsletters/week-06/07-nishant-vs-achal.png", label: "Nishant vs Achal" }
+    ]
+  },
+  {
     week: 7,
     title: "Week 7",
     dates: "October 22–26, 2026",
