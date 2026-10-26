@@ -101,5 +101,22 @@ const WEEKS = [
       { src: "newsletters/week-05/06-nishant-vs-shiamak.png", label: "Nishant vs Shiamak" },
       { src: "newsletters/week-05/07-achal-vs-dhiraj.png", label: "Achal vs Dhiraj" }
     ]
+  },
+  {
+    week: 7,
+    title: "Week 7",
+    dates: "October 22–26, 2026",
+    tagline: "One unbeaten team. Six new tests. Alan stands alone at 6–0.",
+    pages: [
+      { src: "newsletters/week-07/01-week-7-preview.png", label: "Week 7 Preview" },
+      { src: "newsletters/week-07/02-advaith-vs-taylor.png", label: "Advaith vs Taylor" },
+      { src: "newsletters/week-07/03-soham-vs-vaibhav.png", label: "Soham vs Vaibhav" },
+      { src: "newsletters/week-07/04-manas-vs-shiamak.png", label: "Manas vs Shiamak" },
+      { src: "newsletters/week-07/05-dev-vs-dhiraj.png", label: "Dev vs Dhiraj" },
+      { src: "newsletters/week-07/06-nihar-vs-achal.png", label: "Nihar vs Achal" },
+      { src: "newsletters/week-07/07-alan-vs-nishant.png", label: "Alan vs Nishant" },
+      { src: "newsletters/week-07/08-extra-schedule-luck-report.png", label: "League Extra: The Schedule Luck Report" },
+      { src: "newsletters/week-07/09-extra-behind-the-records.png", label: "League Extra: Behind the Records" }
+    ]
   }
 ];
