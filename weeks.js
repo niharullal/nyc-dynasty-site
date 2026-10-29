@@ -133,5 +133,38 @@ const WEEKS = [
       { src: "newsletters/week-07/08-extra-schedule-luck-report.png", label: "League Extra: The Schedule Luck Report" },
       { src: "newsletters/week-07/09-extra-behind-the-records.png", label: "League Extra: Behind the Records" }
     ]
+  },
+  {
+    week: 8,
+    title: "Week 8",
+    dates: "October 29 – November 2, 2026",
+    tagline: "7–0 Alan. 6–1 Nihar. Next up.",
+    pages: [
+      { src: "newsletters/week-08/01-week-8-preview.png", label: "Week 8 Preview" },
+      { src: "newsletters/week-08/02-soham-vs-advaith.png", label: "Soham vs Advaith" },
+      { src: "newsletters/week-08/03-shiamak-vs-taylor.png", label: "Shiamak vs Taylor" },
+      { src: "newsletters/week-08/04-vaibhav-vs-dhiraj.png", label: "Vaibhav vs Dhiraj" },
+      { src: "newsletters/week-08/05-achal-vs-manas.png", label: "Achal vs Manas" },
+      { src: "newsletters/week-08/06-dev-vs-nishant.png", label: "Dev vs Nishant" },
+      { src: "newsletters/week-08/07-nihar-vs-alan.png", label: "Nihar vs Alan" }
+    ]
+  }
+];
+
+// Standalone multi-page specials that get their own tab (rendered after the week tabs).
+// Same page structure as a week; `id` must be unique and URL-safe.
+const COLLECTIONS = [
+  {
+    id: "history",
+    title: "League History",
+    dates: "2022 Startup through 2026 Week 7",
+    tagline: "Draft vs. Trade: 576 draft picks and 103 trades, each scored against the league.",
+    pages: [
+      { src: "history/01-draft-vs-trade.png", label: "Draft vs. Trade" },
+      { src: "history/02-scorecard.png", label: "Scorecard" },
+      { src: "history/03-draft-room.png", label: "Draft Room" },
+      { src: "history/04-trade-room.png", label: "Trade Room" },
+      { src: "history/05-follow-the-picks.png", label: "Follow the Picks" }
+    ]
   }
 ];

@@ -40,3 +40,11 @@ The Week 3 tab renders this full layout automatically while the week's entry in
 replace it as usual once added. Old-account aliases for historical H2H
 (verified against newsletter scores): 1stInLastOut/VaibhavS96 = Vaibhav,
 FalconsAlterego = Achal, DhirajBanda = Dhiraj.
+
+## Standalone collection tabs (e.g. League History)
+
+Multi-page specials that aren't tied to a week get their own tab via the
+`COLLECTIONS` array in `weeks.js` (same `pages` structure as a week, plus a
+unique URL-safe `id`). Drop the images in a top-level folder (e.g. `history/`),
+add or extend the entry, bump the `weeks.js?v=N` tag, commit, push. Collection
+tabs render after the week tabs and before Standings.

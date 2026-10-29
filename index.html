@@ -380,7 +380,7 @@
 
 <footer>Newsletter pages by the commissioner. Live standings via the Sleeper API.</footer>
 
-<script src="weeks.js?v=9"></script>
+<script src="weeks.js?v=10"></script>
 <script src="week3-data.js?v=2"></script>
 <script>
 const LEAGUE_ID = "1312585067658223616";
@@ -414,6 +414,40 @@ function activateTab(id) {
 }
 
 // --- Newsletter week tabs (newest first in WEEKS) ---
+// Renders a list of newsletter image pages (with jump-links when >1) into a panel.
+function renderImagePages(panel, idPrefix, title, pages) {
+  if (pages.length > 1) {
+    const nav = document.createElement("div");
+    nav.className = "page-nav";
+    pages.forEach(p => {
+      const a = document.createElement("a");
+      a.href = "#" + idPrefix + "-" + slugify(p.label);
+      a.textContent = p.label;
+      nav.appendChild(a);
+    });
+    panel.appendChild(nav);
+  }
+  pages.forEach(p => {
+    const sec = document.createElement("div");
+    sec.className = "newsletter-page";
+    const h = document.createElement("h3");
+    h.id = idPrefix + "-" + slugify(p.label);
+    h.textContent = p.label;
+    const img = document.createElement("img");
+    img.src = p.src;
+    img.alt = title + " — " + p.label;
+    img.loading = "lazy";
+    img.addEventListener("click", () => {
+      document.getElementById("lightbox-img").src = p.src;
+      document.getElementById("lightbox").classList.add("open");
+    });
+    sec.appendChild(h);
+    sec.appendChild(img);
+    panel.appendChild(sec);
+  });
+}
+
+// --- Newsletter week tabs ---
 WEEKS.forEach(w => {
   const panel = makeTab("week-" + w.week, w.title);
 
@@ -461,36 +495,19 @@ WEEKS.forEach(w => {
     return;
   }
 
-  if (w.pages.length > 1) {
-    const nav = document.createElement("div");
-    nav.className = "page-nav";
-    w.pages.forEach(p => {
-      const a = document.createElement("a");
-      a.href = "#w" + w.week + "-" + slugify(p.label);
-      a.textContent = p.label;
-      nav.appendChild(a);
-    });
-    panel.appendChild(nav);
-  }
+  renderImagePages(panel, "w" + w.week, w.title, w.pages);
+});
 
-  w.pages.forEach(p => {
-    const sec = document.createElement("div");
-    sec.className = "newsletter-page";
-    const h = document.createElement("h3");
-    h.id = "w" + w.week + "-" + slugify(p.label);
-    h.textContent = p.label;
-    const img = document.createElement("img");
-    img.src = p.src;
-    img.alt = w.title + " — " + p.label;
-    img.loading = "lazy";
-    img.addEventListener("click", () => {
-      document.getElementById("lightbox-img").src = p.src;
-      document.getElementById("lightbox").classList.add("open");
-    });
-    sec.appendChild(h);
-    sec.appendChild(img);
-    panel.appendChild(sec);
-  });
+// --- Standalone collections (League History specials etc.) ---
+(typeof COLLECTIONS !== "undefined" ? COLLECTIONS : []).forEach(c => {
+  const panel = makeTab(c.id, c.title);
+  const head = document.createElement("div");
+  head.className = "week-head";
+  head.innerHTML =
+    '<div class="week-dates">' + c.title + " · " + c.dates + "</div>" +
+    '<div class="week-tagline">' + c.tagline + "</div>";
+  panel.appendChild(head);
+  renderImagePages(panel, c.id, c.title, c.pages);
 });
 
 // --- Full newsletter-style preview renderer ---
